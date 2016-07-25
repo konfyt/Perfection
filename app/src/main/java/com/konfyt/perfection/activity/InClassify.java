@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.konfyt.perfection.R;
 import com.konfyt.perfection.customview.NoScrollViewPager;
@@ -19,63 +22,42 @@ public class InClassify extends AppCompatActivity {
 
     private List<Fragment> mList;
     private List<String> titles;
-    private TabLayout mTabLayout;
-    private NoScrollViewPager mViewPager;
+    private LinearLayout mLayout;
+    private FrameLayout mFrameLayout;
+    private TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_in_classify);
-
+        initView();
 
         String mPath = getIntent().getStringExtra("path");
         String mCat_id = getIntent().getStringExtra("cat_id");
-        initView();
-        initListFragements(mPath,mCat_id);
+        String mTitle = getIntent().getStringExtra("title");
 
-        MyAdapter mAdapter = new MyAdapter(getSupportFragmentManager());
-        mViewPager.setAdapter(mAdapter);
-        mTabLayout.setupWithViewPager(mViewPager);
+        tv.setText(mTitle);
+
 
     }
 
+
+
     private void initView() {
-        mTabLayout = (TabLayout) findViewById(R.id.fragment_inClassify_tablayout);
-        mViewPager = (NoScrollViewPager) findViewById(R.id.fragment_inClassify_viewpager);
+        mLayout = (LinearLayout) findViewById(R.id.classify_layout);
+        mFrameLayout = (FrameLayout) findViewById(R.id.fragment_inClassify_layout);
+        tv = (TextView) findViewById(R.id.in_classify_title);
     }
 
     private void initListFragements(String s1,String s2) {
         mList = new ArrayList<>();
-        mList.add(InFragment.newInstance(s1,s2));
-        mList.add(InFragment.newInstance(s1,s2));
-        mList.add(InFragment.newInstance(s1,s2));
-        titles = new ArrayList<>();
-        titles.add("最新");
-        titles.add("销量");
-        titles.add("价格");
+        mList.add(InFragment.newInstance(s1,s2,"1","0"));
+        mList.add(InFragment.newInstance(s1,s2,"2","0"));
+        mList.add(InFragment.newInstance(s1,s2,"3","4"));
+
     }
 
 
 
-    class MyAdapter extends FragmentPagerAdapter{
 
-        public MyAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mList==null?0:mList.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return titles.get(position);
-        }
-    }
 }

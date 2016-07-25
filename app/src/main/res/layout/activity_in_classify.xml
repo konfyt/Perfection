@@ -9,46 +9,76 @@
 
 
     <RelativeLayout
-        android:background="#f4f4f4"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="45dp"
+        android:background="#f4f4f4">
+
         <TextView
             android:id="@+id/in_classify_title"
-            android:textColor="#e70a0a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text=""
+            android:textColor="#e70a0a"
             android:textSize="18sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             />
+
         <ImageView
-            android:layout_centerVertical="true"
             android:id="@+id/in_classify_back"
-            android:src="@mipmap/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/back"
             />
     </RelativeLayout>
 
-    <android.support.design.widget.TabLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        app:tabIndicatorColor="#e90a0a"
-        app:tabSelectedTextColor="#e90a0a"
-        app:tabTextColor="#8b8b8b"
-        android:id="@+id/fragment_inClassify_tablayout"
+    <RadioGroup
+        android:id="@+id/classify_layout"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:orientation="horizontal">
 
-    </android.support.design.widget.TabLayout>
+        <RadioButton
+            android:background="#fcf7f7"
+            android:textSize="16sp"
+            android:button="@null"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="最新"/>
 
-    <com.konfyt.perfection.customview.NoScrollViewPager
+        <RadioButton
+            android:textSize="16sp"
+            android:background="#fcf7f7"
+            android:button="@null"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="销量"/>
 
-        android:id="@+id/fragment_inClassify_viewpager"
+        <RadioButton
+
+            android:textSize="16sp"
+            android:background="#fcf7f7"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:button="@null"
+            android:text="价格"
+            android:drawableRight="@mipmap/price_middle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+        </RadioButton>
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/fragment_inClassify_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#f4f4f4"
-        >
-
-    </com.konfyt.perfection.customview.NoScrollViewPager>
+        />
 
 </LinearLayout>
