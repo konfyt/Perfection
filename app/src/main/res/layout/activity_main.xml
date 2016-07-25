@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.konfyt.perfection.MainActivity">
+
+
+    <RadioGroup
+        android:id="@+id/activity_main_radioGroup"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#f4f4f4"
+        android:checkedButton="@+id/activity_main_radioButton1"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="3dp"
+        android:paddingTop="3dp">
+
+        <RadioButton
+            android:id="@+id/activity_main_radioButton1"
+            style="@style/main_tab_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:drawableTop="@drawable/main_tab_1"
+            android:gravity="center"
+            android:text="首页"/>
+
+        <RadioButton
+            android:id="@+id/activity_main_radioButton2"
+            style="@style/main_tab_bottom"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:checked="false"
+            android:drawableTop="@drawable/main_tab_2"
+            android:gravity="center"
+            android:text="分类"/>
+
+        <RadioButton
+            android:id="@+id/activity_main_radioButton3"
+            style="@style/main_tab_bottom"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:checked="false"
+            android:drawableTop="@drawable/main_tab_3"
+            android:gravity="center"
+            android:text="购物车"/>
+
+        <RadioButton
+            android:id="@+id/activity_main_radioButton4"
+            style="@style/main_tab_bottom"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:checked="false"
+            android:drawableTop="@drawable/main_tab_4"
+            android:gravity="center"
+            android:text="我的"/>
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/activity_main_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/activity_main_radioGroup"
+        android:layout_alignParentTop="true">
+
+    </FrameLayout>
+</RelativeLayout>
