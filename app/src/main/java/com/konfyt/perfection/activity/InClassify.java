@@ -13,7 +13,7 @@ import com.konfyt.perfection.customview.NoScrollViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
-import layout.InFragment;
+import com.konfyt.perfection.fragment.InFragment;
 
 public class InClassify extends AppCompatActivity {
 

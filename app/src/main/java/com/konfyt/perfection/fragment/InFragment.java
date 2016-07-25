@@ -1,17 +1,22 @@
-package layout;
+package com.konfyt.perfection.fragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 
+import com.google.gson.Gson;
 import com.konfyt.perfection.R;
+import com.konfyt.perfection.adapter.ClassifyAdapter;
+import com.konfyt.perfection.beans.ClassifySale;
 import com.konfyt.perfection.customview.CustomDialog;
 
 import java.io.IOException;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -25,7 +30,9 @@ import okhttp3.Response;
 public class InFragment extends Fragment {
     private int currentPage = 0;
     private int count = 1;
-    private CustomDialog mDialog = new CustomDialog(getActivity());
+    private CustomDialog mDialog ;
+    private GridView mGridView;
+    private ClassifyAdapter mAdapter;
 
     public static InFragment newInstance(String path,String id) {
 
@@ -43,10 +50,14 @@ public class InFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        mDialog= new CustomDialog(getActivity());
         View mView = inflater.inflate(R.layout.fragment_in, container, false);
         Bundle mBundle = getArguments();
         initData(mBundle.getString("PATH"),"1",mBundle.getString("ID"));
         mDialog.show();
+        mGridView = (GridView) mView.findViewById(R.id.fragment_in_gridview);
+        mAdapter = new ClassifyAdapter(getActivity());
+        mGridView.setAdapter(mAdapter);
         return mView;
     }
 
@@ -80,9 +91,19 @@ public class InFragment extends Fragment {
                         mDialog.dismiss();
                         count=2;
                     }
-
+                    Gson mGson = new Gson();
+                    ClassifySale mClassifySale = mGson.fromJson(mString, ClassifySale.class);
+                    final List<ClassifySale.DataBean.CatGoodsBean> mCat_goods = mClassifySale.getData().getCat_goods();
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            mAdapter.addData(mCat_goods);
+                        }
+                    });
                 }
             });
       }
+
+    Handler mHandler = new Handler();
 
 }
