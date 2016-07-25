@@ -7,6 +7,7 @@ import java.util.List;
  */
 public class ClassifySale {
 
+
     /**
      * error : 0
      * message : 成功
@@ -48,12 +49,6 @@ public class ClassifySale {
 
     public static class DataBean {
         /**
-         * content : {"770101":"保暖","770102":"抱枕·靠垫·坐垫","770103":"宠物用品","770104":"床上用品","770105":"打火机·点烟器·电子烟","770107":"儿童·母婴","770108":"购物车·购物袋","770109":"计量用具","770110":"加湿器","770111":"家具","770112":"乐器","770113":"礼品·礼盒·红包","770114":"门铃·门挡","770115":"纳凉","770116":"驱蚊","770117":"伞·雨衣·雨靴","770118":"生活电器","770119":"收纳整理","770120":"睡衣·午睡毯·披肩","770121":"拖鞋·家居鞋","770122":"桌垫","770123":"五金·工具"}
-         * id_arr : [770116,770119,770102,770117,770110,770104,770118,770115,770105,770101,770120,770113,770121,770114,770103,770109,770107,770108,770122,770111,770123,770112]
-         */
-
-        private CategoryBean category;
-        /**
          * goods_id : 57202
          * shop_price : 159.00
          * promote_price : 159.00
@@ -65,57 +60,12 @@ public class ClassifySale {
 
         private List<CatGoodsBean> cat_goods;
 
-        public CategoryBean getCategory() {
-            return category;
-        }
-
-        public void setCategory(CategoryBean category) {
-            this.category = category;
-        }
-
         public List<CatGoodsBean> getCat_goods() {
             return cat_goods;
         }
 
         public void setCat_goods(List<CatGoodsBean> cat_goods) {
             this.cat_goods = cat_goods;
-        }
-
-        public static class CategoryBean {
-            /**
-             * 770101 : 保暖
-             * 770102 : 抱枕·靠垫·坐垫
-             * 770103 : 宠物用品
-             * 770104 : 床上用品
-             * 770105 : 打火机·点烟器·电子烟
-             * 770107 : 儿童·母婴
-             * 770108 : 购物车·购物袋
-             * 770109 : 计量用具
-             * 770110 : 加湿器
-             * 770111 : 家具
-             * 770112 : 乐器
-             * 770113 : 礼品·礼盒·红包
-             * 770114 : 门铃·门挡
-             * 770115 : 纳凉
-             * 770116 : 驱蚊
-             * 770117 : 伞·雨衣·雨靴
-             * 770118 : 生活电器
-             * 770119 : 收纳整理
-             * 770120 : 睡衣·午睡毯·披肩
-             * 770121 : 拖鞋·家居鞋
-             * 770122 : 桌垫
-             * 770123 : 五金·工具
-             */
-
-
-            private List<Integer> id_arr;
-
-
-
-
-
-
-            }
         }
 
         public static class CatGoodsBean {
@@ -184,4 +134,5 @@ public class ClassifySale {
             }
         }
     }
+}
 

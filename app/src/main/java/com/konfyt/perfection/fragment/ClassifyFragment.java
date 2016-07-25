@@ -1,6 +1,7 @@
 package com.konfyt.perfection.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,12 +9,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.konfyt.perfection.R;
+import com.konfyt.perfection.activity.InClassify;
 import com.konfyt.perfection.utils.UrlAddress;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ClassifyFragment extends Fragment implements View.OnClickListener{
+
 
 
     public ClassifyFragment() {
@@ -47,9 +55,11 @@ public class ClassifyFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
+        Intent mIntent = new Intent(getActivity(), InClassify.class);
         switch (view.getId()){
             case R.id.classify_ft_jiaju:
-                initData(UrlAddress.jiaJuNewPost);
+                mIntent.putExtra("path","http://qwapi.quwan.com/goods/goods_category/index");
+                mIntent.putExtra("cat_id","7701");
                 break;
             case R.id.classify_ft_shuma:
                 break;
@@ -74,11 +84,9 @@ public class ClassifyFragment extends Fragment implements View.OnClickListener{
             case R.id.classify_ft_gehu:
                 break;
         }
+        startActivity(mIntent);
     }
 
-    private void initData(String path) {
-
-    }
 
 
 }
