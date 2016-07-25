@@ -1,5 +1,6 @@
 package com.konfyt.perfection.beans;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -192,7 +193,7 @@ public class Home {
             this.notice = notice;
         }
 
-        public static class BannerBean {
+        public static class BannerBean implements Serializable {
             private String config_type;
             private String config_specname;
             private String picture_url;
@@ -275,7 +276,7 @@ public class Home {
                 this.goodsinfo = goodsinfo;
             }
 
-            public static class GoodsinfoBean {
+            public static class GoodsinfoBean implements Serializable {
                 private String goods_id;
                 private String goods_name;
                 private String goods_thumb;

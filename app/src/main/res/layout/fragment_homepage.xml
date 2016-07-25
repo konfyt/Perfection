@@ -49,63 +49,61 @@
                 >
 
             <!--第一行-->
-            <ImageView
+            <com.konfyt.perfection.customview.AutoScrollViewPager
                     android:id="@+id/home_ft_ImageView1"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:src="@mipmap/ic_launcher"
+                    android:layout_height="180dp"
+                    android:scaleType="fitXY"
                     />
             <!--第二行-->
             <RelativeLayout
                     android:id="@+id/home_ft_Layout2"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="125dp"
 
                     >
 
-                <ImageView
-                        android:id="@+id/home_ft_ImageView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:src="@mipmap/ic_launcher"
-                        android:layout_marginLeft="5dp"
-                        />
+                <GridView
 
-                <TextView
-                        android:id="@+id/home_ft_TextView1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:text="sssss"
-                        android:gravity="center_horizontal"
-                        android:layout_below="@+id/home_ft_ImageView2"
-                        />
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:numColumns="4"
+                        android:padding="3dp"
+                        android:verticalSpacing="5dp"
+                        android:horizontalSpacing="5dp"
+                        android:id="@+id/home_ft_gridView"
+                        ></GridView>
+
+
             </RelativeLayout>
 
             <!--第三行-->
             <RelativeLayout
                     android:id="@+id/home_ft_Layout3"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="80dp"
                     android:gravity="center_horizontal"
                     android:background="#ffffff"
                     >
 
                 <TextView
+                        android:layout_marginTop="10dp"
                         android:id="@+id/home_ft_TextView2"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-android:gravity="center"
+                        android:gravity="center"
                         android:text="专题推荐"
                         android:textSize="20sp"
-
+                        android:textStyle="bold"
                         />
 
                 <TextView
+                        android:layout_marginTop="5dp"
                         android:id="@+id/home_ft_TextView3"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:text="每日好物精选专题推荐"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:gravity="center_horizontal"
                         android:layout_below="@+id/home_ft_TextView2"
                         />
@@ -115,36 +113,39 @@ android:gravity="center"
             <RelativeLayout
                     android:id="@+id/home_ft_Layout4"
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:gravity="center_vertical"
+                    android:layout_height="420dp"
                     android:background="#ffffff"
-
                     >
 
                 <RelativeLayout
                         android:id="@+id/home_ft_RelativeLayout1"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_height="180dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="8dp"
                         >
 
                     <ImageView
                             android:layout_centerInParent="true"
                             android:id="@+id/home_ft_ImageView3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
                             android:src="@mipmap/ic_launcher"
-
+                            android:alpha="0.8"
                             />
 
+
                     <TextView
+                            android:id="@+id/home_ft_TextView22"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="aaaa"
-                            android:gravity="center_horizontal"
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
                             android:textColor="#ffffff"
+                            android:textSize="18sp"
                             />
                 </RelativeLayout>
 
@@ -153,27 +154,31 @@ android:gravity="center"
                         android:layout_below="@+id/home_ft_RelativeLayout1"
                         android:id="@+id/home_ft_RelativeLayout2"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_height="180dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="8dp"
                         >
 
                     <ImageView
                             android:layout_centerInParent="true"
                             android:id="@+id/home_ft_ImageView4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
                             android:src="@mipmap/ic_launcher"
-
+                            android:alpha="0.7"
                             />
 
                     <TextView
+                            android:id="@+id/home_ft_TextView33"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="aaaa"
-                            android:gravity="center_horizontal"
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
                             android:textColor="#ffffff"
+                            android:textSize="18sp"
                             />
                 </RelativeLayout>
 
@@ -195,6 +200,7 @@ android:gravity="center"
                             android:layout_height="match_parent"
                             android:text="更多"
                             android:gravity="center"
+                            android:textSize="18sp"
                             />
 
                     <ImageView
@@ -205,7 +211,6 @@ android:gravity="center"
                             android:gravity="center"
                             android:layout_marginLeft="5dp"
                             />
-
 
 
                 </LinearLayout>
