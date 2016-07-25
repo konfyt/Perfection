@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //123456789
         //查找RadioGroup
         radioGroup = (RadioGroup) findViewById(R.id.activity_main_radioGroup);
         //获取碎片管理器

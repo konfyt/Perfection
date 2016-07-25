@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.konfyt.perfection.activity.InClassify">
+
+
+    <RelativeLayout
+        android:background="#f4f4f4"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:id="@+id/in_classify_title"
+            android:textColor="#e70a0a"
+            android:layout_centerInParent="true"
+            android:text=""
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/in_classify_back"
+            android:src="@mipmap/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </RelativeLayout>
+
+    <GridView
+        android:numColumns="2"
+        android:id="@+id/in_classify_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </GridView>
+
+</LinearLayout>
