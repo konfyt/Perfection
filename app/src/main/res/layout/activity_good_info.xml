@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.konfyt.perfection.activity.GoodInfo"
+        >
+
+    <ImageView
+            android:src="@mipmap/good_fanhui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    <ImageView
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/good_fenxiang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    <android.support.v4.view.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:id="@+id/goods_info_viewpager"
+            >
+
+    </android.support.v4.view.ViewPager>
+
+    http://qwapi.quwan.com/goods/goods_info
+</RelativeLayout>
