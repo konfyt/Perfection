@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 
 import com.konfyt.perfection.fragment.ClassifyFragment;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private ClassifyFragment mClassifyFragment;
     private MeFragment mMeFragment;
     private ShoppingCartFragment mShoppingCartFragment;
+    private ImageView img;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

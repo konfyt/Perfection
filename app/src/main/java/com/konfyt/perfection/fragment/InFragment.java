@@ -34,13 +34,13 @@ public class InFragment extends Fragment {
     private GridView mGridView;
     private ClassifyAdapter mAdapter;
 
-    public static InFragment newInstance(String path,String id,String sort1,String sort2) {
+    public static InFragment newInstance(String path,String id,String sort) {
 
         Bundle args = new Bundle();
         args.putString("PATH",path);
         args.putString("ID",id);
-        args.putString("sort1",sort1);
-        args.putString("sort2",sort2);
+        args.putString("sort",sort);
+
 
         InFragment fragment = new InFragment();
         fragment.setArguments(args);
@@ -55,7 +55,7 @@ public class InFragment extends Fragment {
         mDialog= new CustomDialog(getActivity());
         View mView = inflater.inflate(R.layout.fragment_in, container, false);
         Bundle mBundle = getArguments();
-        initData(mBundle.getString("PATH"),mBundle.getString("sort1"),mBundle.getString("ID"));
+        initData(mBundle.getString("PATH"),mBundle.getString("sort"),mBundle.getString("ID"));
         mDialog.show();
         mGridView = (GridView) mView.findViewById(R.id.fragment_in_gridview);
         mAdapter = new ClassifyAdapter(getActivity());

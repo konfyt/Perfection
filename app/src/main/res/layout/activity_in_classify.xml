@@ -32,13 +32,14 @@
             />
     </RelativeLayout>
 
-    <RadioGroup
+    <LinearLayout
         android:id="@+id/classify_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal">
 
-        <RadioButton
+        <Button
+            android:id="@+id/tv1"
             android:background="#fcf7f7"
             android:textSize="16sp"
             android:button="@null"
@@ -48,7 +49,8 @@
             android:gravity="center"
             android:text="最新"/>
 
-        <RadioButton
+        <Button
+            android:id="@+id/tv2"
             android:textSize="16sp"
             android:background="#fcf7f7"
             android:button="@null"
@@ -58,8 +60,8 @@
             android:gravity="center"
             android:text="销量"/>
 
-        <RadioButton
-
+        <Button
+            android:id="@+id/tv3"
             android:textSize="16sp"
             android:background="#fcf7f7"
             android:paddingLeft="30dp"
@@ -72,8 +74,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal">
-        </RadioButton>
-    </RadioGroup>
+        </Button>
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/fragment_inClassify_layout"
