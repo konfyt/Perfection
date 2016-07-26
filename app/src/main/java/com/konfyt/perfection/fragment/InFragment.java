@@ -1,5 +1,6 @@
 package com.konfyt.perfection.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -7,10 +8,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.google.gson.Gson;
 import com.konfyt.perfection.R;
+import com.konfyt.perfection.activity.GoodInfo;
 import com.konfyt.perfection.adapter.ClassifyAdapter;
 import com.konfyt.perfection.beans.ClassifySale;
 import com.konfyt.perfection.customview.CustomDialog;
@@ -33,6 +36,7 @@ public class InFragment extends Fragment {
     private CustomDialog mDialog ;
     private GridView mGridView;
     private ClassifyAdapter mAdapter;
+    private List<ClassifySale.DataBean.CatGoodsBean> mCat_goods;
 
     public static InFragment newInstance(String path,String id,String sort) {
 
@@ -60,7 +64,14 @@ public class InFragment extends Fragment {
         mGridView = (GridView) mView.findViewById(R.id.fragment_in_gridview);
         mAdapter = new ClassifyAdapter(getActivity());
         mGridView.setAdapter(mAdapter);
-
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent mIntent = new Intent(getActivity(), GoodInfo.class);
+                mIntent.putExtra("idid",mCat_goods.get(i).getGoods_id());
+                startActivity(mIntent);
+            }
+        });
         return mView;
     }
 
@@ -96,7 +107,7 @@ public class InFragment extends Fragment {
                     }
                     Gson mGson = new Gson();
                     ClassifySale mClassifySale = mGson.fromJson(mString, ClassifySale.class);
-                    final List<ClassifySale.DataBean.CatGoodsBean> mCat_goods = mClassifySale.getData().getCat_goods();
+                    mCat_goods = mClassifySale.getData().getCat_goods();
                     mHandler.post(new Runnable() {
                         @Override
                         public void run() {
