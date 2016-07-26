@@ -439,7 +439,7 @@ public class Home {
             }
         }
 
-        public static class WolegequBean {
+        public static class WolegequBean implements Serializable{
             private String goods_id;
             private String goods_name;
             private String shop_price;

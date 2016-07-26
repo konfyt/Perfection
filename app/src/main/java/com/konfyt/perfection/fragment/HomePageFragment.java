@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.OrientationHelper;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.AutoCompleteTextView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,6 +20,7 @@ import com.google.gson.Gson;
 import com.konfyt.perfection.Home_ft.Home_Ft_one;
 import com.konfyt.perfection.R;
 import com.konfyt.perfection.adapter.EveryPageAdapter;
+import com.konfyt.perfection.adapter.Home_ft_five_adapter;
 import com.konfyt.perfection.adapter.Home_two_adapter;
 import com.konfyt.perfection.beans.Home;
 import com.konfyt.perfection.customview.AutoScrollViewPager;
@@ -46,6 +49,9 @@ public class HomePageFragment extends Fragment {
     private ImageView mImageView4;
     private TextView mTextView3;
     private TextView mTextView4;
+    private RecyclerView mRecyclerView5;//第五行
+    private LinearLayoutManager mLayoutManager;
+
 
     public HomePageFragment() {
         // Required empty public constructor
@@ -57,7 +63,7 @@ public class HomePageFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view = inflater.inflate(R.layout.fragment_homepage,container,false);
+        View view = inflater.inflate(R.layout.fragment_homepage, container, false);
 
         //第一行控件
         mImageView = (ImageView) view.findViewById(R.id.home_ft_search);
@@ -68,12 +74,23 @@ public class HomePageFragment extends Fragment {
         mLayout = (AutoScrollViewPager) view.findViewById(R.id.home_ft_ImageView1);
 
         //第三行控件
-        mImageView3 = (ImageView)view.findViewById(R.id.home_ft_ImageView3);
-        mImageView4 = (ImageView)view.findViewById(R.id.home_ft_ImageView4);
-        mTextView3 = (TextView)view.findViewById(R.id.home_ft_TextView22);
-        mTextView4 = (TextView)view.findViewById(R.id.home_ft_TextView33);
+        mImageView3 = (ImageView) view.findViewById(R.id.home_ft_ImageView3);
+        mImageView4 = (ImageView) view.findViewById(R.id.home_ft_ImageView4);
+        mTextView3 = (TextView) view.findViewById(R.id.home_ft_TextView22);
+        mTextView4 = (TextView) view.findViewById(R.id.home_ft_TextView33);
 
-        mFragments=new ArrayList<>();
+        //第五行控件
+        mRecyclerView5 = (RecyclerView) view.findViewById(R.id.home_ft_RecyclerView5);
+
+
+        //创建线性布局
+        mLayoutManager=new LinearLayoutManager(getActivity());
+        //垂直方向
+        mLayoutManager.setOrientation(OrientationHelper.HORIZONTAL);
+        mRecyclerView5.setLayoutManager(mLayoutManager);
+
+                //第一行页面集合
+        mFragments = new ArrayList<>();
 
         initUI();
 
@@ -119,9 +136,9 @@ public class HomePageFragment extends Fragment {
                     List<Home.DataBean.PlateBean> plate = home.getData().getPlate();
                     //第三行数据
                     List<Home.DataBean.ZhuantiListBean> zhuanti_list = home.getData().getZhuanti_list();
-                    //第四行数据
-                    List<Home.DataBean.WolegequBean> wolegequ = home.getData().getWolegequ();
                     //第五行数据
+                    List<Home.DataBean.WolegequBean> wolegequ = home.getData().getWolegequ();
+                    //第六行数据
                     List<Home.DataBean.EverydaynewBean> everydaynew = home.getData().getEverydaynew();
 
 
@@ -142,6 +159,20 @@ public class HomePageFragment extends Fragment {
                         Message obtain = Message.obtain();
                         obtain.obj = zhuanti_list;
                         obtain.what = 3;
+                        mHandler.sendMessage(obtain);
+                    }
+
+                    if (wolegequ != null) {
+                        Message obtain = Message.obtain();
+                        obtain.obj = wolegequ;
+                        obtain.what = 5;
+                        mHandler.sendMessage(obtain);
+                    }
+
+                    if (everydaynew != null) {
+                        Message obtain = Message.obtain();
+                        obtain.obj = everydaynew;
+                        obtain.what = 6;
                         mHandler.sendMessage(obtain);
                     }
 
@@ -174,7 +205,7 @@ public class HomePageFragment extends Fragment {
                     break;
 
                 case 2:
-                    List<Home.DataBean.PlateBean> plate= (List<Home.DataBean.PlateBean>)msg.obj;
+                    List<Home.DataBean.PlateBean> plate = (List<Home.DataBean.PlateBean>) msg.obj;
 
                     Home_two_adapter mAdapter2 = new Home_two_adapter(getActivity());
                     mGridView.setAdapter(mAdapter2);
@@ -194,8 +225,24 @@ public class HomePageFragment extends Fragment {
                             .cacheOnDisk(true)//具有磁盘缓存
                             .bitmapConfig(Bitmap.Config.RGB_565)//图片的解码方式
                             .build();
-                    ImageLoader.getInstance().displayImage(zhuan.get(0).getPicture_url(),mImageView3,options);
-                    ImageLoader.getInstance().displayImage(zhuan.get(1).getPicture_url(),mImageView4,options);
+                    ImageLoader.getInstance().displayImage(zhuan.get(0).getPicture_url(), mImageView3, options);
+                    ImageLoader.getInstance().displayImage(zhuan.get(1).getPicture_url(), mImageView4, options);
+
+                    break;
+
+                case 5:
+                    List<Home.DataBean.WolegequBean> woleg = (List<Home.DataBean.WolegequBean>) msg.obj;
+
+
+                    Home_ft_five_adapter mAdapter5=new Home_ft_five_adapter(getActivity());
+                    mRecyclerView5.setAdapter(mAdapter5);
+                    mAdapter5.addData(woleg);
+
+
+                    break;
+                case 6:
+
+                    List<Home.DataBean.EverydaynewBean> every = (List<Home.DataBean.EverydaynewBean>) msg.obj;
 
                     break;
             }
