@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by XCQ on 16/7/25.
  */
-public class Home {
+public class Home implements Serializable{
 
 
 
@@ -56,7 +56,7 @@ public class Home {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable {
         private int integral;
         /**
          * config_type : 4
@@ -334,7 +334,7 @@ public class Home {
             }
         }
 
-        public static class PlateBean {
+        public static class PlateBean implements Serializable {
             private String type;
             private String name;
             private String picture_url;
@@ -373,7 +373,7 @@ public class Home {
             }
         }
 
-        public static class ZhuantiListBean {
+        public static class ZhuantiListBean implements Serializable{
             private String config_type;
             private String config_specname;
             private String picture_url;
@@ -532,7 +532,7 @@ public class Home {
             }
         }
 
-        public static class EverydaynewBean {
+        public static class EverydaynewBean implements Serializable {
             private String goods_id;
             private String goods_name;
             private String shop_price;

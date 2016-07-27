@@ -1,11 +1,14 @@
 package com.konfyt.perfection.fragment;
 
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ScrollingView;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
@@ -13,14 +16,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.*;
 import com.google.gson.Gson;
 import com.konfyt.perfection.Home_ft.Home_Ft_one;
+import com.konfyt.perfection.Home_ft_four_Activity;
+import com.konfyt.perfection.Home_two_Activity;
 import com.konfyt.perfection.R;
 import com.konfyt.perfection.adapter.EveryPageAdapter;
 import com.konfyt.perfection.adapter.Home_ft_five_adapter;
+import com.konfyt.perfection.adapter.Home_ft_six_adapter;
 import com.konfyt.perfection.adapter.Home_two_adapter;
 import com.konfyt.perfection.beans.Home;
 import com.konfyt.perfection.customview.AutoScrollViewPager;
@@ -47,10 +51,17 @@ public class HomePageFragment extends Fragment {
     //第三行的两张图片   两行文字  一个按钮
     private ImageView mImageView3;
     private ImageView mImageView4;
+    private ImageView mImageView5;
     private TextView mTextView3;
     private TextView mTextView4;
+    private TextView mTextView5;
     private RecyclerView mRecyclerView5;//第五行
     private LinearLayoutManager mLayoutManager;
+    private ListView mListView6;
+    private ScrollView mScrollView;
+
+    private Home home;
+    private List<Home.DataBean.ZhuantiListBean> zhuan;
 
 
     public HomePageFragment() {
@@ -65,6 +76,10 @@ public class HomePageFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_homepage, container, false);
 
+        mScrollView = (ScrollView) view.findViewById(R.id.home_ft_ScrollView);
+        //   mScrollView.smoothScrollTo(0,0);
+
+
         //第一行控件
         mImageView = (ImageView) view.findViewById(R.id.home_ft_search);
         //第二行控件
@@ -76,20 +91,30 @@ public class HomePageFragment extends Fragment {
         //第三行控件
         mImageView3 = (ImageView) view.findViewById(R.id.home_ft_ImageView3);
         mImageView4 = (ImageView) view.findViewById(R.id.home_ft_ImageView4);
+        mImageView5 = (ImageView) view.findViewById(R.id.home_ft_ImageView5);
         mTextView3 = (TextView) view.findViewById(R.id.home_ft_TextView22);
         mTextView4 = (TextView) view.findViewById(R.id.home_ft_TextView33);
+        mTextView5 = (TextView) view.findViewById(R.id.home_ft_TextView44);
 
         //第五行控件
         mRecyclerView5 = (RecyclerView) view.findViewById(R.id.home_ft_RecyclerView5);
 
+        //第六行控件
+        mListView6 = (ListView) view.findViewById(R.id.home_ft_ListView6);
+
 
         //创建线性布局
-        mLayoutManager=new LinearLayoutManager(getActivity());
+        mLayoutManager = new LinearLayoutManager(getActivity());
         //垂直方向
         mLayoutManager.setOrientation(OrientationHelper.HORIZONTAL);
         mRecyclerView5.setLayoutManager(mLayoutManager);
 
-                //第一行页面集合
+
+//        //默认显示一行   这样显示四行
+//        GridLayoutManager manager=new GridLayoutManager(getActivity(),4);
+//        mRecyclerView5.setLayoutManager(manager);
+
+        //第一行页面集合
         mFragments = new ArrayList<>();
 
         initUI();
@@ -116,6 +141,8 @@ public class HomePageFragment extends Fragment {
         Call call = okHttpClient.newCall(mRequest);
 
         call.enqueue(new Callback() {
+
+
             @Override
             public void onFailure(Call call, IOException e) {
 
@@ -128,7 +155,7 @@ public class HomePageFragment extends Fragment {
 
                     String string = response.body().string();
                     Gson gson = new Gson();
-                    Home home = gson.fromJson(string, Home.class);
+                    home = gson.fromJson(string, Home.class);
 
                     //第一行数据
                     List<Home.DataBean.BannerBean> banner = home.getData().getBanner();
@@ -202,6 +229,19 @@ public class HomePageFragment extends Fragment {
                         mLayout.setAdapter(new EveryPageAdapter(mFragments, getFragmentManager()));
                         mLayout.startAutoScroll();
                     }
+
+
+                    //点击事件
+                    mLayout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent1 = new Intent();
+
+
+                        }
+                    });
+
+
                     break;
 
                 case 2:
@@ -211,11 +251,19 @@ public class HomePageFragment extends Fragment {
                     mGridView.setAdapter(mAdapter2);
                     mAdapter2.addData(plate);
 
+                    mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Intent intent2 = new Intent(getActivity(), Home_two_Activity.class);
+
+                            startActivity(intent2);
+                        }
+                    });
 
                     break;
 
                 case 3:
-                    List<Home.DataBean.ZhuantiListBean> zhuan = (List<Home.DataBean.ZhuantiListBean>) msg.obj;
+                    zhuan = (List<Home.DataBean.ZhuantiListBean>) msg.obj;
 
                     mTextView3.setText(zhuan.get(0).getConfig_specname());
                     mTextView4.setText(zhuan.get(1).getConfig_specname());
@@ -228,13 +276,39 @@ public class HomePageFragment extends Fragment {
                     ImageLoader.getInstance().displayImage(zhuan.get(0).getPicture_url(), mImageView3, options);
                     ImageLoader.getInstance().displayImage(zhuan.get(1).getPicture_url(), mImageView4, options);
 
+                    mImageView3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            five();
+                        }
+                    });
+                    mImageView4.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            five();
+                        }
+                    });
+                    mImageView5.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            five();
+                        }
+                    });
+                    mTextView5.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            five();
+                        }
+                    });
+
+
                     break;
 
                 case 5:
                     List<Home.DataBean.WolegequBean> woleg = (List<Home.DataBean.WolegequBean>) msg.obj;
 
 
-                    Home_ft_five_adapter mAdapter5=new Home_ft_five_adapter(getActivity());
+                    Home_ft_five_adapter mAdapter5 = new Home_ft_five_adapter(getActivity());
                     mRecyclerView5.setAdapter(mAdapter5);
                     mAdapter5.addData(woleg);
 
@@ -244,9 +318,21 @@ public class HomePageFragment extends Fragment {
 
                     List<Home.DataBean.EverydaynewBean> every = (List<Home.DataBean.EverydaynewBean>) msg.obj;
 
+                    Home_ft_six_adapter mAdapter6 = new Home_ft_six_adapter(getContext());
+                    mListView6.setAdapter(mAdapter6);
+                    mAdapter6.addData(every);
+
+
                     break;
             }
 
         }
     };
+
+    private void five() {
+        Intent intent = new Intent(getActivity(), Home_ft_four_Activity.class);
+
+
+        startActivity(intent);
+    }
 }

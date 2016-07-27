@@ -31,6 +31,14 @@
         </activity>
         <activity android:name=".activity.GoodInfo">
         </activity>
+        <activity
+                android:name=".Home_two_Activity"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+                >
+        </activity>
+        <activity android:name=".Home_ft_four_Activity"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
