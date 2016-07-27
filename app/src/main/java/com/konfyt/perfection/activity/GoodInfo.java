@@ -1,6 +1,8 @@
 package com.konfyt.perfection.activity;
 
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -13,13 +15,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.konfyt.perfection.R;
+import com.konfyt.perfection.adapter.GoodsAdapter;
 import com.konfyt.perfection.beans.ClassifySale;
 import com.konfyt.perfection.beans.Goods;
+import com.konfyt.perfection.customview.NoScrollGirdView;
+import com.konfyt.perfection.customview.NoScrollViewPager;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -41,7 +48,9 @@ public class GoodInfo extends AppCompatActivity {
     private List<ImageView> imgs;
     private MyAdapter mMyAdapter;
     private DisplayImageOptions options;
-    private RecyclerView mRecylerView;
+    private NoScrollGirdView mGridView;
+    private GoodsAdapter adapter;
+    private Goods mGoods;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,14 +65,24 @@ public class GoodInfo extends AppCompatActivity {
         mWebView = (WebView) findViewById(R.id.goods_info_webview);
         imgs = new ArrayList<>();
         mMyAdapter = new MyAdapter();
+        adapter = new GoodsAdapter(this);
         mViewPager.setAdapter(mMyAdapter);
         mWebView.getSettings().setLoadWithOverviewMode(true);
-        mRecylerView = (RecyclerView) findViewById(R.id.goods_info_shop_recyclerview);
+        mGridView = (NoScrollGirdView) findViewById(R.id.goods_info_shop_view);
         options = new DisplayImageOptions.Builder()
                 .cacheInMemory(true)//具有内存缓存
                 .cacheOnDisk(true)//具有磁盘缓存
-                .bitmapConfig(Bitmap.Config.RGB_565)//图片的解码方式
+                .bitmapConfig(Bitmap.Config.RGB_565)
                 .build();
+        mGridView.setAdapter(adapter);
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+               // imgs.clear();
+                List<String> mPic_arr = mGoods.getData().getGoods().get(i).getPic_arr();
+                getImg(mPic_arr);
+            }
+        });
     }
 
     private void initData(String id) {
@@ -90,7 +109,7 @@ public class GoodInfo extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 String mString = response.body().string();
                 Gson mGson = new Gson();
-                final Goods mGoods = mGson.fromJson(mString, Goods.class);
+                mGoods = mGson.fromJson(mString, Goods.class);
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
@@ -100,25 +119,45 @@ public class GoodInfo extends AppCompatActivity {
                         ((TextView) findViewById(R.id.goods_info_shop_price)).setText("￥"+mGoods.getData().getGoods().get(0).getShop_price());
                         mWebView.loadDataWithBaseURL(null, mGoods.getData().getGoods_detail(), "text/html", "utf-8", null);
                         List<String> mPic_arr = mGoods.getData().getGoods().get(0).getPic_arr();
-                        for (int i = 0; i < mPic_arr.size(); i++) {
-                            ImageView mImageView = new ImageView(GoodInfo.this);
-                            ImageLoader.getInstance().displayImage(mPic_arr.get(i),mImageView,options);
-                            imgs.add(mImageView);
-                        }
-                        mMyAdapter.notifyDataSetChanged();
-
+                        getImg(mPic_arr);
+                        List<Goods.DataBean.GoodsBean> mGoods1 = mGoods.getData().getGoods();
+                        adapter.addData(mGoods1);
                     }
                 });
             }
+
+
         });
     }
+
+    private void getImg(List<String> mPic_arr) {
+
+        imgs.clear();
+        for (int i = 0; i < mPic_arr.size(); i++) {
+            ImageView mImageView = new ImageView(GoodInfo.this);
+            ImageLoader.getInstance().displayImage(mPic_arr.get(i),mImageView,options);
+            mImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            imgs.add(mImageView);
+        }
+        mMyAdapter.setList(imgs);
+        mMyAdapter.notifyDataSetChanged();
+
+    }
+
     Handler mHandler = new Handler();
 
     class MyAdapter extends PagerAdapter{
 
+        private List<ImageView> myList = new ArrayList<>();
+
+        public void setList(List<ImageView> list){
+            myList.clear();
+            myList.addAll(list);
+        }
+
         @Override
         public int getCount() {
-            return imgs==null?0:imgs.size();
+            return myList==null?0:myList.size();
         }
 
         @Override
@@ -128,13 +167,24 @@ public class GoodInfo extends AppCompatActivity {
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
-            container.removeView(imgs.get(position));
+//            if(myList.size()<= position-1){
+//            Log.e("AAA","==>"+position);
+//               // container.removeView(myList.get(position));
+//            }
+
         }
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            container.addView(imgs.get(position));
-            return imgs.get(position);
+             container.addView(imgs.get(position));
+            return myList.get(position);
+        }
+
+        @Override
+        public int getItemPosition(Object object) {
+            return POSITION_NONE;
         }
     }
+
+
 }

@@ -47,7 +47,6 @@ public class A extends Application {
                 .diskCacheSize(100*1024*1024) //配置磁盘大小
                 .diskCacheFileCount(100)  //配置磁盘缓存文件的数量
                 .diskCacheFileNameGenerator(new HashCodeFileNameGenerator())//磁盘缓存文件的命名器
-                .writeDebugLogs() //输出log日志
                 .diskCache(new UnlimitedDiskCache(file))//定义磁盘缓存文件
                 .build();
 

@@ -32,6 +32,4 @@ public class EveryPageAdapter extends FragmentPagerAdapter{
     public int getCount() {
         return mFragmentList==null?0:mFragmentList.size();
     }
-
-
 }
