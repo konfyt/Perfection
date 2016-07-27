@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ScrollingView;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
@@ -22,6 +23,7 @@ import com.konfyt.perfection.Home_ft.Home_Ft_one;
 import com.konfyt.perfection.Home_ft_four_Activity;
 import com.konfyt.perfection.Home_two_Activity;
 import com.konfyt.perfection.R;
+import com.konfyt.perfection.activity.GoodInfo;
 import com.konfyt.perfection.adapter.EveryPageAdapter;
 import com.konfyt.perfection.adapter.Home_ft_five_adapter;
 import com.konfyt.perfection.adapter.Home_ft_six_adapter;
@@ -218,7 +220,7 @@ public class HomePageFragment extends Fragment {
             switch (msg.what) {
 
                 case 1:
-                    List<Home.DataBean.BannerBean> banner = (List<Home.DataBean.BannerBean>) msg.obj;
+                    final List<Home.DataBean.BannerBean> banner = (List<Home.DataBean.BannerBean>) msg.obj;
 
                     for (int i = 0; i < banner.size(); i++) {
                         Home.DataBean.BannerBean bannerBean1 = banner.get(i);
@@ -230,17 +232,27 @@ public class HomePageFragment extends Fragment {
                         mLayout.startAutoScroll();
                     }
 
-
                     //点击事件
-                    mLayout.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent1 = new Intent();
 
+                    mLayout.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                        @Override
+                        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                        }
+
+                        @Override
+                        public void onPageSelected(int position) {
+                            Intent intent1 = new Intent(getActivity(), GoodInfo.class);
+                            intent1.putExtra("idid",banner.get(position).getId() );
+
+                            startActivity(intent1);
+                        }
+
+                        @Override
+                        public void onPageScrollStateChanged(int state) {
 
                         }
                     });
-
 
                     break;
 
