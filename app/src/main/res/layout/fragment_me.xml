@@ -84,18 +84,133 @@
                         android:layout_below="@+id/register_fragment4"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
+                        android:layout_marginTop="20dp"
                         >
 
                     <RelativeLayout
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="match_parent"
-                            ></RelativeLayout>
+                            >
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/yuer"
+                                android:id="@+id/imageView1"
+                                android:layout_alignBottom="@+id/textView1"
+                                android:layout_alignRight="@+id/tv1"
+                                android:layout_alignEnd="@+id/tv1"
+                                android:layout_marginRight="24dp"
+                                android:layout_marginEnd="24dp"
+                                />
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="余额"
+                                android:id="@+id/textView1"
+                                android:layout_marginLeft="24dp"
+                                android:layout_marginStart="24dp"
+                                android:layout_above="@+id/tv1"
+                                android:layout_alignLeft="@+id/tv1"
+                                android:layout_alignStart="@+id/tv1"
+                                android:layout_marginBottom="10dp"
+                                />
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="$0.00"
+                                android:id="@+id/tv1"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="36dp"
+                                />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            >
+                        <ImageView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/youhuiquan"
+                                android:id="@+id/imageView2"
+                                android:layout_alignBottom="@+id/textView2"
+                                android:layout_toLeftOf="@+id/tv2"
+                                android:layout_toStartOf="@+id/tv2"
+                                />
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="优惠券"
+                                android:id="@+id/textView2"
+                                android:layout_marginBottom="10dp"
+                                android:layout_above="@+id/tv2"
+                                android:layout_toRightOf="@+id/tv2"
+                                android:layout_toEndOf="@+id/tv2"
+                                />
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:id="@+id/tv2"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="36dp"
+                                />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            >
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/jifen"
+                                android:id="@+id/imageView3"
+                                android:layout_alignBottom="@+id/textView3"
+                                android:layout_toLeftOf="@+id/tv3"
+                                android:layout_toStartOf="@+id/tv3"
+                                />
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="积分"
+                                android:id="@+id/textView3"
+                                android:layout_marginBottom="10dp"
+                                android:layout_above="@+id/tv3"
+                                android:layout_toRightOf="@+id/tv3"
+                                android:layout_toEndOf="@+id/tv3"
+                                />
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:id="@+id/tv3"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="36dp"
+                                />
+                    </RelativeLayout>
+
 
                 </LinearLayout>
 
 
             </RelativeLayout>
+
+            <Button
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:drawableLeft="@mipmap/index_all_indent"
+                    android:text="全部订单"
+                    android:drawableRight="@mipmap/more"
+                    />
 
             <LinearLayout
                     android:layout_width="match_parent"
@@ -111,13 +226,7 @@
                         android:orientation="vertical"
                         >
 
-                    <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_gravity="center"
-                            android:layout_margin="10dp"
 
-                            />
 
                     <TextView
                             android:layout_width="wrap_content"
@@ -137,13 +246,7 @@
                         android:orientation="vertical"
                         >
 
-                    <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_gravity="center"
-                            android:layout_margin="10dp"
 
-                            />
 
                     <TextView
                             android:layout_width="wrap_content"
@@ -163,13 +266,6 @@
                         android:orientation="vertical"
                         >
 
-                    <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_gravity="center"
-                            android:layout_margin="10dp"
-
-                            />
 
                     <TextView
                             android:layout_width="wrap_content"
@@ -189,13 +285,6 @@
                         android:orientation="vertical"
                         >
 
-                    <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_gravity="center"
-                            android:layout_margin="10dp"
-
-                            />
 
                     <TextView
                             android:layout_width="wrap_content"
@@ -227,12 +316,13 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:layout_toRightOf="@id/iv1_left_fragment4"
                         android:gravity="center"
                         android:padding="5dp"
                         android:text="我的订单"
                         android:textSize="15dp"
+                        android:layout_alignTop="@+id/iv1_left_fragment4"
+                        android:layout_toRightOf="@+id/iv1_left_fragment4"
+                        android:layout_toEndOf="@+id/iv1_left_fragment4"
                         />
 
                 <ImageView

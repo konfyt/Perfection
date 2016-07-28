@@ -10,6 +10,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
+            android:id="@+id/linearLayout"
             >
         <ImageView
                 android:layout_width="0dp"
@@ -36,6 +37,137 @@
                 />
     </LinearLayout>
 
+    <ImageView
+            android:id="@+id/lougou"
+            android:layout_width="100dp"
+            android:layout_height="66dp"
+            android:src="@mipmap/denglu_logo"
+            android:layout_marginTop="43dp"
+            android:layout_below="@+id/linearLayout"
+            android:layout_centerHorizontal="true"
+            />
+    <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/lougou"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="vertical"
+            android:id="@+id/layout2"
+            >
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                >
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="邮箱  :"
+                    android:gravity="center"
+                    />
+            <EditText
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入邮箱地址"
+                    />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                >
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="密码  :"
+                    android:gravity="center"
+                    />
+            <EditText
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入登录密码"
+                    />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+            android:id="@+id/button"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/layout2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="登 录"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_yuanjiao"
+            />
+
+    <TextView
+            android:id="@+id/san"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:layout_below="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="第三方账号快速登录"
+            />
+    <LinearLayout
+            android:layout_marginTop="10dp"
+            android:id="@+id/layout3"
+            android:layout_below="@+id/san"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            >
+        <ImageView
+                android:layout_margin="6dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:src="@mipmap/weixing_login"
+                />
+        <ImageView
+                android:layout_margin="6dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:src="@mipmap/weibo_login"
+                />
+        <ImageView
+                android:layout_margin="6dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:src="@mipmap/qq_login"
+                />
+
+    </LinearLayout>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="忘记密码"
+
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            />
 
 
 </RelativeLayout>
