@@ -232,27 +232,6 @@ public class HomePageFragment extends Fragment {
                         mLayout.startAutoScroll();
                     }
 
-                    //点击事件
-
-                    mLayout.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                        @Override
-                        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-                        }
-
-                        @Override
-                        public void onPageSelected(int position) {
-                            Intent intent1 = new Intent(getActivity(), GoodInfo.class);
-                            intent1.putExtra("idid",banner.get(position).getId() );
-
-                            startActivity(intent1);
-                        }
-
-                        @Override
-                        public void onPageScrollStateChanged(int state) {
-
-                        }
-                    });
 
                     break;
 

@@ -20,7 +20,7 @@
             <android.support.v4.view.ViewPager
                 android:id="@+id/goods_info_viewpager"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="380dp"
                 >
 
             </android.support.v4.view.ViewPager>
@@ -276,14 +276,16 @@
     </ScrollView>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:src="@mipmap/good_fanhui"
         />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_alignParentRight="true"
         android:src="@mipmap/good_fenxiang"
         />

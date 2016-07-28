@@ -29,7 +29,8 @@
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar"
                 >
         </activity>
-        <activity android:name=".activity.GoodInfo">
+        <activity android:name=".activity.GoodInfo"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
                 android:name=".Home_two_Activity"

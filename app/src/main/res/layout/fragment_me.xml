@@ -1,13 +1,435 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
+              android:orientation="vertical"
              tools:context="com.konfyt.perfection.fragment.MeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"/>
 
-</FrameLayout>
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:background="@mipmap/index_me_banner_bg">
+
+                <ImageView
+                        android:id="@+id/setting_fragment4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/index_moren_head"
+                        android:layout_above="@+id/login_fragment4"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="27dp"
+                        />
+
+                <TextView
+                        android:id="@+id/or_text_fragment4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="|"
+                        android:textColor="#ffffff"
+                        android:textSize="20dp"
+                        android:layout_alignTop="@+id/register_fragment4"
+                        android:layout_centerHorizontal="true"
+                        />
+
+                <TextView
+                        android:id="@+id/register_fragment4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="注册"
+                        android:textColor="#ffffff"
+                        android:textSize="20dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/or_text_fragment4"
+                        android:layout_toStartOf="@+id/or_text_fragment4"
+                        android:layout_marginRight="19dp"
+                        android:layout_marginEnd="19dp"
+                        />
+
+                <TextView
+                        android:id="@+id/login_fragment4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="登录"
+                        android:textColor="#ffffff"
+                        android:textSize="20dp"
+                        android:layout_alignBaseline="@+id/or_text_fragment4"
+                        android:layout_alignBottom="@+id/or_text_fragment4"
+                        android:layout_toRightOf="@+id/or_text_fragment4"
+                        android:layout_toEndOf="@+id/or_text_fragment4"
+                        android:layout_marginLeft="22dp"
+                        android:layout_marginStart="22dp"
+                        />
+
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/register_fragment4"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        >
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <LinearLayout
+                        android:id="@+id/Pending_fragment4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/icon_pay_big"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="10dp"
+                            android:text="待付款"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/deliver_fragment4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/icon_delivery"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="10dp"
+                            android:text="待发货"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/receipt_fragment4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/icon_logistics"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="10dp"
+                            android:text="待收货"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/evaluate_fragment4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/icon_evaluate"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="10dp"
+                            android:text="待评价"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                    android:id="@+id/order_fragment4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <ImageView
+                        android:id="@+id/iv1_left_fragment4"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/icon_order"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_toRightOf="@id/iv1_left_fragment4"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="我的订单"
+                        android:textSize="15dp"/>
+
+                <ImageView
+                        android:id="@+id/iv1_right_fragment"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/icon_arrow"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="5dp"
+                        android:layout_toLeftOf="@id/iv1_right_fragment"
+                        android:padding="5dp"
+                        android:text="查看全部订单"
+                        android:textSize="10dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:id="@+id/taobao_fragment4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                <ImageView
+                        android:id="@+id/iv2_left_fragment4"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/icon_tb_order"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_toRightOf="@id/iv2_left_fragment4"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="淘宝订单"
+                        android:textSize="15dp"/>
+
+                <ImageView
+                        android:id="@+id/iv2_right_fragment"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/icon_arrow"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="5dp"
+                        android:layout_toLeftOf="@id/iv2_right_fragment"
+                        android:padding="5dp"
+                        android:text="别漏了这里的零食"
+                        android:textSize="10dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:id="@+id/coupon_fragment4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                <ImageView
+                        android:id="@+id/iv3_left_fragment4"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/icon_coupon"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_toRightOf="@id/iv3_left_fragment4"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="我的优惠券"
+                        android:textSize="15dp"/>
+
+                <ImageView
+                        android:id="@+id/iv3_right_fragment"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/icon_arrow"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="5dp"
+                        android:layout_toLeftOf="@id/iv3_right_fragment"
+                        android:padding="5dp"
+                        android:text="查看全部订单"
+                        android:textSize="10dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:id="@+id/collection_fragment4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <ImageView
+                        android:id="@+id/iv4_left_fragment4"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/icon_like_mine"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_toRightOf="@id/iv4_left_fragment4"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="我的收藏"
+                        android:textSize="15dp"/>
+
+                <ImageView
+                        android:id="@+id/iv4_right_fragment"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/icon_arrow"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:id="@+id/service_fragment4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <ImageView
+                        android:id="@+id/iv5_left_fragment4"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/icon_service"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_toRightOf="@id/iv5_left_fragment4"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="联系客服"
+                        android:textSize="15dp"/>
+
+                <ImageView
+                        android:id="@+id/iv5_right_fragment"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/icon_arrow"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="5dp"
+                        android:layout_toLeftOf="@id/iv5_right_fragment"
+                        android:padding="5dp"
+                        android:text="010-57236350"
+                        android:textSize="10dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:id="@+id/opinion_fragment4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                <ImageView
+                        android:id="@+id/iv6_left_fragment4"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/icon_feedback"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_toRightOf="@id/iv6_left_fragment4"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="意见反馈"
+                        android:textSize="15dp"/>
+
+                <ImageView
+                        android:id="@+id/iv6_right_fragment"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/icon_arrow"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

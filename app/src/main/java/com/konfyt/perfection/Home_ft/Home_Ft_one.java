@@ -1,6 +1,7 @@
 package com.konfyt.perfection.Home_ft;
 
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 
 import android.widget.ImageView;
 import com.konfyt.perfection.R;
+import com.konfyt.perfection.activity.GoodInfo;
 import com.konfyt.perfection.beans.Home;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -20,6 +22,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 public class Home_Ft_one extends Fragment {
 
 
+
+    private  Home.DataBean.BannerBean aa;
     private ImageView imageView;
     public Home_Ft_one() {
         // Required empty public constructor
@@ -47,7 +51,7 @@ public class Home_Ft_one extends Fragment {
 
         Bundle bundle = getArguments();
 
-        Home.DataBean.BannerBean aa = (Home.DataBean.BannerBean) bundle.getSerializable("aa");
+        aa = (Home.DataBean.BannerBean) bundle.getSerializable("aa");
 
 
 
@@ -58,6 +62,19 @@ public class Home_Ft_one extends Fragment {
                 .bitmapConfig(Bitmap.Config.RGB_565)//图片的解码方式
                 .build();
         ImageLoader.getInstance().displayImage(aa.getPicture_url(),imageView,options);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getActivity(), GoodInfo.class);
+
+                String id = aa.getGoodsinfo().getGoods_id();
+                intent1.putExtra("idid", id);
+
+                startActivity(intent1);
+            }
+        });
+
 
         return view;
 
