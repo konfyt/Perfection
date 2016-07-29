@@ -68,8 +68,8 @@ public class Home_Ft_one extends Fragment {
             public void onClick(View view) {
                 Intent intent1 = new Intent(getActivity(), GoodInfo.class);
 
-                String id = aa.getGoodsinfo().getGoods_id();
-                intent1.putExtra("idid", id);
+//                String id = aa.g.getGoods_id();
+//                intent1.putExtra("idid", id);
 
                 startActivity(intent1);
             }
