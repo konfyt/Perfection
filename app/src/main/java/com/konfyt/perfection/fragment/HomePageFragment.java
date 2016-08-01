@@ -160,7 +160,7 @@ public class HomePageFragment extends Fragment {
                     home = gson.fromJson(string, Home.class);
 
                     //第一行数据
-                    List<Home.DataBean.BannerBean> banner = home.getData().getBanner();
+                   List<Home.DataBean.BannerBean> banner = home.getData().getBanner();
                     //第二行数据
                     List<Home.DataBean.PlateBean> plate = home.getData().getPlate();
                     //第三行数据

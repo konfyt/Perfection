@@ -22,9 +22,9 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 public class Home_Ft_one extends Fragment {
 
 
-
-    private  Home.DataBean.BannerBean aa;
+    private Home.DataBean.BannerBean aa;
     private ImageView imageView;
+
     public Home_Ft_one() {
         // Required empty public constructor
     }
@@ -33,7 +33,7 @@ public class Home_Ft_one extends Fragment {
     public static Home_Ft_one newInstance(Home.DataBean.BannerBean bannerBean) {
 
         Bundle args = new Bundle();
-        args.putSerializable("aa",bannerBean);
+        args.putSerializable("aa", bannerBean);
         Home_Ft_one fragment = new Home_Ft_one();
         fragment.setArguments(args);
         return fragment;
@@ -47,13 +47,14 @@ public class Home_Ft_one extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home__ft_ont, container, false);
 
-         imageView = (ImageView) view.findViewById(R.id.home_ft_one_ft_im);
+        imageView = (ImageView) view.findViewById(R.id.home_ft_one_ft_im);
 
         Bundle bundle = getArguments();
 
         aa = (Home.DataBean.BannerBean) bundle.getSerializable("aa");
 
 
+        final int ss = aa.getConfig_type();
 
 
         DisplayImageOptions options = new DisplayImageOptions.Builder()
@@ -61,17 +62,22 @@ public class Home_Ft_one extends Fragment {
                 .cacheOnDisk(true)//具有磁盘缓存
                 .bitmapConfig(Bitmap.Config.RGB_565)//图片的解码方式
                 .build();
-        ImageLoader.getInstance().displayImage(aa.getPicture_url(),imageView,options);
+        ImageLoader.getInstance().displayImage(aa.getPicture_url(), imageView, options);
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(getActivity(), GoodInfo.class);
 
-//                String id = aa.g.getGoods_id();
-//                intent1.putExtra("idid", id);
 
-                startActivity(intent1);
+                if (ss == 4) {
+
+                    Intent intent1 = new Intent(getActivity(), GoodInfo.class);
+
+                    String id = aa.getGoodsinfo().getGoods_id();
+                    intent1.putExtra("idid", id);
+
+                    startActivity(intent1);
+                }
             }
         });
 

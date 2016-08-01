@@ -10,8 +10,8 @@
             android:id="@+id/home_ft_one_ft_im"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-           android:src="@mipmap/ic_launcher"
             android:scaleType="fitXY"
+            android:src="@mipmap/morentu"
             />
 
 </FrameLayout>

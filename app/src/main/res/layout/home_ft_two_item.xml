@@ -13,7 +13,7 @@
             android:id="@+id/home_two_item_im"
             android:layout_width="match_parent"
             android:layout_height="85dp"
-            android:src="@mipmap/ic_launcher"
+            android:src="@mipmap/morentu"
             android:gravity="center"
             />
 
