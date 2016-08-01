@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="#ffffff"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout
+        android:weightSum="1"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+        <ImageView
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_weight="0.45"
+            android:src="@mipmap/ic_launcher"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="0.55"
+            >
+            <TextView
+                android:layout_weight="1"
+                android:text="理财提哈佛后返回断送i哦发饿死佛阿娥送风机hoe啊哈佛"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"/>
+            <TextView
+                android:textColor="#d91515"
+                android:layout_weight="1"
+                android:text="39"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"/>
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+                <LinearLayout
+                    android:background="@drawable/bg_cat_item"
+                    android:layout_weight="3"
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                    <RelativeLayout
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_width="0dp">
+                        <ImageView
+                            android:layout_centerInParent="true"
+                            android:layout_width="wrap_content"
+                            android:src="@mipmap/reduce"
+                            android:layout_height="wrap_content"/>
+                    </RelativeLayout>
+                    <TextView
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:text="0"
+                        android:layout_height="match_parent"/>
+                    <RelativeLayout
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_width="0dp">
+                        <ImageView
+                            android:layout_centerInParent="true"
+                            android:layout_width="wrap_content"
+                            android:src="@mipmap/add"
+                            android:layout_height="wrap_content"/>
+                    </RelativeLayout>
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <GridView
+        android:id="@+id/pop_gridview"
+        android:numColumns="6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </GridView>
+
+</LinearLayout>

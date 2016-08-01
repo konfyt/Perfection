@@ -1,5 +1,9 @@
 package com.konfyt.perfection.activity;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -11,16 +15,24 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.konfyt.perfection.DBHelper;
 import com.konfyt.perfection.R;
 import com.konfyt.perfection.adapter.GoodsAdapter;
 import com.konfyt.perfection.beans.ClassifySale;
@@ -51,11 +63,17 @@ public class GoodInfo extends AppCompatActivity {
     private NoScrollGirdView mGridView;
     private GoodsAdapter adapter;
     private Goods mGoods;
+    private Button canshuBtn;
+    private Button addGoods;
+    private int position=0;
+    private SQLiteDatabase db;
+    private DBHelper mHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_good_info);
+        mHelper = new DBHelper(this);
         initView();
         initData(getIntent().getStringExtra("idid"));
     }
@@ -78,9 +96,55 @@ public class GoodInfo extends AppCompatActivity {
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                position=i;
                // imgs.clear();
                 List<String> mPic_arr = mGoods.getData().getGoods().get(i).getPic_arr();
                 getImg(mPic_arr);
+            }
+        });
+        canshuBtn = (Button) findViewById(R.id.goods_info_canshu);
+        canshuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPopwindow();
+            }
+        });
+        findViewById(R.id.info_fanhui).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        addGoods = (Button) findViewById(R.id.addfoods);
+        addGoods.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Goods.DataBean.GoodsBean mGoodsBean = mGoods.getData().getGoods().get(position);
+                String mPic = mGoodsBean.getSmall_pic();
+                String mId = mGoods.getData().getGoods().get(0).getGoods_id();
+                String nowId = mGoods.getData().getGoods().get(position).getGoods_id();
+                String mName = mGoodsBean.getGoods_name();
+                String mPrice = mGoodsBean.getShop_price();
+                db = mHelper.getWritableDatabase();
+                Cursor mGoods = db.query("goods", new String[]{"_id", "goodid","num"}, "goodid=?", new String[]{nowId+""}, null, null, null);
+                if (mGoods.getCount()>0) {
+                    if (mGoods.moveToNext()){
+                        int mNum = mGoods.getInt(mGoods.getColumnIndex("num"));
+                        int id = mGoods.getInt(mGoods.getColumnIndex("_id"));
+                        ContentValues mContentValues = new ContentValues();
+                        mContentValues.put("num",mNum+1);
+                        db.update("goods",mContentValues,"_id=?",new String[]{id+""});
+                    }
+                }else {
+                    ContentValues mValues = new ContentValues();
+                    mValues.put("pic",mPic);
+                    mValues.put("name",mName);
+                    mValues.put("price",mPrice);
+                    mValues.put("num",1);
+                    mValues.put("goodid",nowId);
+                    mValues.put("tiaozhuanid",mId);
+                    db.insert("goods",null,mValues);
+                }
             }
         });
     }
@@ -146,6 +210,10 @@ public class GoodInfo extends AppCompatActivity {
 
     Handler mHandler = new Handler();
 
+    public void back(View view) {
+        finish();
+    }
+
     class MyAdapter extends PagerAdapter{
 
         private List<ImageView> myList = new ArrayList<>();
@@ -187,4 +255,83 @@ public class GoodInfo extends AppCompatActivity {
     }
 
 
+    private void showPopwindow() {
+        // 利用layoutInflater获得View
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.canshu_popwindow, null);
+        ListView mListView = (ListView) view.findViewById(R.id.pop_lv);
+        List<Goods.DataBean.GoodsBean.GoodsAttrBean> mPic_arr = mGoods.getData().getGoods().get(0).getGoods_attr();
+        List<String> mList = new ArrayList<>();
+        for (int i = 0; i < mPic_arr.size(); i++) {
+            Goods.DataBean.GoodsBean.GoodsAttrBean mGoodsAttrBean = mPic_arr.get(i);
+            mList.add(mGoodsAttrBean.getK()+"  "+mGoodsAttrBean.getV());
+        }
+        ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,mList);
+        mListView.setAdapter(mAdapter);
+        // 下面是两种方法得到宽度和高度 getWindow().getDecorView().getWidth()
+
+        final PopupWindow window = new PopupWindow(view,
+                WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.WRAP_CONTENT);
+
+        // 设置popWindow弹出窗体可点击，这句话必须添加，并且是true
+        window.setFocusable(true);
+
+
+
+        // 设置popWindow的显示和消失动画
+        window.setAnimationStyle(R.style.mypopwindow_anim_style);
+        // 在底部显示
+        window.showAtLocation(findViewById(R.id.pop_relative),
+                Gravity.BOTTOM, 0, 0);
+
+
+        ImageView img = (ImageView) view.findViewById(R.id.pop_guanbi);
+        img.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                window.dismiss();
+            }
+        });
+
+
+    }
+    private void showPopwindowBuy() {
+        // 利用layoutInflater获得View
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.gouwu_popwindow, null);
+        ListView mListView = (ListView) view.findViewById(R.id.pop_lv);
+
+        // 下面是两种方法得到宽度和高度 getWindow().getDecorView().getWidth()
+
+        final PopupWindow window = new PopupWindow(view,
+                WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.WRAP_CONTENT);
+
+        // 设置popWindow弹出窗体可点击，这句话必须添加，并且是true
+        window.setFocusable(true);
+
+
+
+        // 设置popWindow的显示和消失动画
+        window.setAnimationStyle(R.style.mypopwindow_anim_style);
+        // 在底部显示
+        window.showAtLocation(findViewById(R.id.pop_relative),
+                Gravity.BOTTOM, 0, 0);
+
+
+        ImageView img = (ImageView) view.findViewById(R.id.pop_guanbi);
+        img.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                window.dismiss();
+            }
+        });
+
+
+    }
 }

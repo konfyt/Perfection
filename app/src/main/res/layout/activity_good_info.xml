@@ -3,6 +3,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pop_relative"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.konfyt.perfection.activity.GoodInfo"
@@ -58,23 +59,23 @@
                     />
 
                 <TextView
-                    android:paddingRight="10dp"
                     android:id="@+id/goods_info_shop_price"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="right|center_vertical"
+                    android:paddingRight="10dp"
                     android:textColor="#e20606"/>
             </LinearLayout>
 
             <com.konfyt.perfection.customview.NoScrollGirdView
 
-                android:listSelector="@drawable/goods"
-                android:numColumns="6"
                 android:id="@+id/goods_info_shop_view"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_below="@id/ll"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:listSelector="@drawable/goods"
+                android:numColumns="6">
             </com.konfyt.perfection.customview.NoScrollGirdView>
 
             <Button
@@ -106,12 +107,12 @@
                     android:src="@mipmap/tuwenxiangqing"/>
 
                 <TextView
-                    android:textColor="#000000"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:paddingLeft="10dp"
-                    android:text="图文详情"/>
+                    android:text="图文详情"
+                    android:textColor="#000000"/>
 
             </LinearLayout>
 
@@ -133,9 +134,9 @@
                 android:padding="10dp">
 
                 <LinearLayout
-                    android:background="#ffffff"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#ffffff"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -153,9 +154,9 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:background="#ffffff"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#ffffff"
                     android:orientation="horizontal">
 
                     <TextView
@@ -209,9 +210,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:minLines="2"
                         android:paddingLeft="5dp"
                         android:text="配送服务:"
-                        android:minLines="2"
                         android:textColor="#000000"
                         android:textStyle="bold"/>
 
@@ -223,7 +224,6 @@
                         android:text="限大陆地区，申通、圆通、顺丰等随机发货，商品全场满99元包邮"/>
 
                 </LinearLayout>
-
 
 
                 <LinearLayout
@@ -276,17 +276,62 @@
     </ScrollView>
 
     <ImageView
-            android:layout_margin="10dp"
+        android:id="@+id/info_fanhui"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_margin="10dp"
         android:src="@mipmap/good_fanhui"
         />
 
     <ImageView
-            android:layout_margin="10dp"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
         android:src="@mipmap/good_fenxiang"
         />
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+    <ImageView
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/kefu"/>
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/xihuan_no"/>
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/gouwuche"/>
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+               android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_yuanjiao"
+                android:text="立即购买"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/addfoods"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_bian"
+                android:text="加入购物车"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
