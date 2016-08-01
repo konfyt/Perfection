@@ -68,6 +68,7 @@ public class GoodInfo extends AppCompatActivity {
     private int position=0;
     private SQLiteDatabase db;
     private DBHelper mHelper;
+    private int now =0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,6 +146,22 @@ public class GoodInfo extends AppCompatActivity {
                     mValues.put("tiaozhuanid",mId);
                     db.insert("goods",null,mValues);
                 }
+            }
+        });
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                now=position;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
     }
@@ -235,10 +252,11 @@ public class GoodInfo extends AppCompatActivity {
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
-//            if(myList.size()<= position-1){
-//            Log.e("AAA","==>"+position);
-//               // container.removeView(myList.get(position));
-//            }
+            if(myList.size()<= now){
+                container.removeView(myList.get(myList.size()-1));
+            }else {
+                container.removeView(myList.get(position));
+            }
 
         }
 
